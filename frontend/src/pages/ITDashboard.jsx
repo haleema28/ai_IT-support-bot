@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../api/axiosInstance";
 import Navbar from "../components/Navbar";
 
@@ -6,6 +7,7 @@ export default function ITDashboard() {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const fetchAssigned = async () => {
     try {
@@ -34,7 +36,12 @@ export default function ITDashboard() {
     <div>
       <Navbar />
       <div className="container-page py-8 max-w-5xl">
+      <div className="flex items-center justify-between mb-4">
         <h2 className="mb-4">Assigned Tickets</h2>
+        <button onClick={()=> navigate("/kb")} className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
+          📚 Add Knowledge Base
+        </button>
+      </div>
         {loading ? (
           <p className="text-slate-500">Loading…</p>
         ) : error ? (
