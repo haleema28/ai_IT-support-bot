@@ -16,7 +16,7 @@ export default function Login() {
       if (role === "it_support") {
         window.location.href = "/it";
       } else {
-        window.location.href = "/tickets";
+        window.location.href = "/dashboard";
       }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
